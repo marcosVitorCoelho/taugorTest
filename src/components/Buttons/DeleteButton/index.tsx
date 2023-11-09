@@ -1,10 +1,19 @@
 import { Delete } from "@mui/icons-material"
 import IconButton from "@mui/material/IconButton"
+import { useContext } from "react";
+import EmployeeContext from "../../../contexts/EmployeeContext";
 
-export const DeleteButton = () => {
+interface DeleteButtonProps {
+  id: string;
+}
+
+export const DeleteButton = ({ id }: DeleteButtonProps) => {
+
+  const { handleDelete } = useContext(EmployeeContext)
+
   return (
-    <IconButton onClick={() => console.log('ola')}>
-      <Delete color='warning'/>
+    <IconButton onClick={() => handleDelete(id)}>
+      <Delete color='warning' />
     </IconButton>
   )
 }

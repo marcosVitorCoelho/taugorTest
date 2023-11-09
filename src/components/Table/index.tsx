@@ -11,7 +11,7 @@ import { TableInfo } from "../../interfaces/table.interface";
 
 
 
-export default function CustomTable({rows, columns}: TableInfo){
+export default function CustomTable({ rows, columns }: TableInfo) {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
@@ -27,53 +27,53 @@ export default function CustomTable({rows, columns}: TableInfo){
 
   return (
     <Paper elevation={0} sx={{ width: '100%', overflow: 'hidden' }}>
-        <TableContainer sx={{ height: 400 }}>
-          <Table aria-label="custom pagination table" stickyHeader>
-            <TableHead>
-              <TableRow>
-                {columns.map((column) => (
-                  <TableCell
-                    key={column.id}
-                    align={"center"}
-                    style={{ minWidth: 'fit-content', backgroundColor: '#388CC8', color: '#fff', fontSize: '16px', fontWeight: 'bold', }}
-                  >
-                    {column.label}
-                  </TableCell>
-                ))}
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {rows
-                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                .map((row, index) => {
-                  return (
-                    <TableRow hover role="checkbox" tabIndex={-1} key={index}>
-                      {columns.map((column) => {
-                        const value = row[column.id];
-                        return (
-                          <TableCell key={column.id} align={'center'}>
-                            {column.format && typeof value === 'number'
-                              ? column.format(value)
-                              : value}
-                          </TableCell>
-                        );
-                      })}
-                    </TableRow>
-                  );
-                })}
-            </TableBody>
-          </Table>
-        </TableContainer>
-        <TablePagination
-          labelRowsPerPage='Linhas por página'
-          rowsPerPageOptions={[10, 20, 30]}
-          component="div"
-          count={rows.length}
-          rowsPerPage={rowsPerPage}
-          page={page}
-          onPageChange={handleChangePage}
-          onRowsPerPageChange={handleChangeRowsPerPage}
-        />
-      </Paper>
+      <TableContainer sx={{ height: 400 }}>
+        <Table aria-label="custom pagination table" stickyHeader>
+          <TableHead>
+            <TableRow>
+              {columns.map((column) => (
+                <TableCell
+                  key={column.id}
+                  align={"center"}
+                  style={{ minWidth: 'fit-content', backgroundColor: '#388CC8', color: '#fff', fontSize: '16px', fontWeight: 'bold', }}
+                >
+                  {column.label}
+                </TableCell>
+              ))}
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {rows && rows
+              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              .map((row, index) => {
+                return (
+                  <TableRow hover role="checkbox" tabIndex={-1} key={index}>
+                    {columns.map((column) => {
+                      const value = row[column.id];
+                      return (
+                        <TableCell key={column.id} align={'center'}>
+                          {column.format && typeof value === 'number'
+                            ? column.format(value)
+                            : value}
+                        </TableCell>
+                      );
+                    })}
+                  </TableRow>
+                );
+              })}
+          </TableBody>
+        </Table>
+      </TableContainer>
+      <TablePagination
+        labelRowsPerPage='Linhas por página'
+        rowsPerPageOptions={[10, 20, 30]}
+        component="div"
+        count={rows ? rows.length : 0}
+        rowsPerPage={rowsPerPage}
+        page={page}
+        onPageChange={handleChangePage}
+        onRowsPerPageChange={handleChangeRowsPerPage}
+      />
+    </Paper>
   )
 }

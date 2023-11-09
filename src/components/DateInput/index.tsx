@@ -1,8 +1,6 @@
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import dayjs from 'dayjs';
-
 export interface Field {
   field: string;
   id?: string;
@@ -10,6 +8,9 @@ export interface Field {
 export interface IInputProps {
   label?: string;
   field?: Field;
+  onChange?: () => void;
+  helperText?: string;
+  value?: Date;
 }
 
 export default function DateInput({
@@ -20,10 +21,10 @@ export default function DateInput({
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DatePicker
+        format='DD/MM/YYYY'
+        slotProps={{ textField: { size: 'small' } }}
         {...props}
         label={label}
-        value={field!.value}
-        onChange={field!.onChange}
       />
     </LocalizationProvider>
   );

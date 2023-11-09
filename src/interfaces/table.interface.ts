@@ -13,7 +13,7 @@ export interface Data {
 }
 
 export interface Column {
-  id: 'name' | 'sex' | 'phone' | 'role' | 'department' | 'salary' | 'del' | 'edit' | 'firstName' | 'lastName';
+  id: 'sex' | 'phone' | 'role' | 'department' | 'salary' | 'del' | 'edit' | 'firstName' | 'lastName';
   label: string;
   minWidth?: number;
   format?: (value: number) => string;
@@ -21,6 +21,6 @@ export interface Column {
 
 
 export interface TableInfo {
-  rows: Data[],
+  rows: Data[] | undefined,
   columns: Column[]
 }

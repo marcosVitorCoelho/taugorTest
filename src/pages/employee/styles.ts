@@ -3,8 +3,8 @@ import styled from "styled-components";
 
 export const FormContainer = styled(Stack)`
   gap: 10px;
-  width: 500px;
-  height: max-content;
+  width: 50%;
+  height: 800px;
   align-items: center;
   justify-content: center;
   padding: 16px;
@@ -21,5 +21,22 @@ export const FormContainer = styled(Stack)`
 `;
 
 export const FormInputContainer = styled(Stack)`
+form{
+  display: flex;
+  flex-direction: column;
   gap: 10px;
+}
 `;
+
+export const NamePhotoContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+`
+
+export const Container = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+`

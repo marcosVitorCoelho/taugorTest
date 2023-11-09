@@ -1,7 +1,7 @@
 import { Stack } from "@mui/material";
 import styled from "styled-components";
 
-export const Container = styled(Stack)`
+export const TableContainer = styled(Stack)`
   gap: 10px;
   width: 60vw;
   height: fit-content;
@@ -16,3 +16,9 @@ export const Container = styled(Stack)`
   -webkit-backdrop-filter: blur( 4.5px );
   border-radius: 10px;
 `;
+
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+`

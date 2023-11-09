@@ -11,7 +11,7 @@ export function Router() {
     <Routes>
       <Route path="/" element={<DefaultLayout />}>
         <Route path={'/home'} element={<PrivateRoute><Home /></PrivateRoute>} />
-        <Route path={'/employee/id:'} element={<PrivateRoute><EmployeePage /></PrivateRoute>} />
+        <Route path={'/employee/:id'} element={<PrivateRoute><EmployeePage /></PrivateRoute>} />
         <Route path={'/employee'} element={<PrivateRoute><EmployeePage /></PrivateRoute>} />
         <Route path={'/createUser'} element={<CreateUser />} />
         <Route path={'/'} element={<Login />} />

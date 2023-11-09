@@ -10,13 +10,14 @@ import UserAuthenticationContext from "../../../contexts/UserAuthContext";
 const SignInSchema = yup.object().shape({
   email: yup.string().email("Email inválido").required("Preencha seu email"),
   password: yup.string().required("Digite sua senha"),
+  second: yup.string(),
 });
 
 type userLoginSchema = yup.InferType<typeof SignInSchema>
 
 export default function Login() {
   const { handleAuthUser } = useContext(UserAuthenticationContext);
-  
+
 
   const handleSubmit = async (values: userLoginSchema) => {
     try {
@@ -29,6 +30,7 @@ export default function Login() {
   const initialValues: userLoginSchema = {
     email: "",
     password: "",
+    second: ''
   };
 
 
@@ -53,6 +55,7 @@ export default function Login() {
                   error={touched.email && Boolean(errors.email)}
                   helperText={touched.email && errors.email}
                   component={CustomInput}
+
                 />
                 <Field
                   name="password"
